@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="user.js"></script>
+  </head>
+  
+  <body>
+    <form  id="form" method="POST" action="customerReg.php" onsubmit="return validate();">
+<div class="wrapper">
+    <div class="title">
+      Registration
+    </div>
+    <div class="form">
+       <div class="inputfield">
+          <label>Name</label>
+          <input type="text" class="input" name="name" id="username" placeholder="Enter your name" >
+          <div class="error"></div>
+       </div>  
+       <div class="inputfield">
+          <label>Email</label>
+          <input type="text" class="input" name="email" id="email" placeholder="Email" placeholder="Enter your email">
+          <div class="error"></div>
+       </div>  
+      <div class="inputfield">
+          <label>Course</label>
+          <input type="text" name="course" id="course" class="input">
+       </div> 
+        <div class="inputfield">
+          <label>Gender</label>
+          <div class="custom_select">
+            <select name="gender" id="gender">
+              <option value="">Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+       </div> 
+        <div class="inputfield">
+          <label>Date of Birth</label>
+          <input type="date" class="input" name="dob"id="dob">
+       </div> 
+      <div class="inputfield">
+          <label>Phone Number</label>
+          <input type="text" class="input" name="phone" id="phone" min="10" maxlength="10" placeholder="Enter your number" required>
+       </div> 
+       <div class="inputfield">
+        <label>Password</label>
+        <input type="password" name="password" id="password" class="input" required >
+        <div class="error"></div>
+     </div>  
+    <div class="inputfield">
+        <label>Confirm Password</label>
+        <input type="password" name="cpassword" id="cpassword" class="input"  required>
+        <div class="error"></div>
+     </div>  
+      <div class="inputfield terms">
+          <label class="check">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+          <p>Agreed to terms and conditions</p>
+       </div> 
+      <div class="inputfield">
+        <input type="submit" value="Register" name="submit" class="btn">
+      </div>
+    </div>
+</div>
+</form>
+ <!-- JAVASCRIPT -->
+ <script src="user.js"></script>
+</body>
+</html>
