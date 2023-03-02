@@ -4,7 +4,7 @@
   
         <ul class="nav">
             <li class="dropdown menu-item">
-              <?php $sql=mysqli_query($conn,"select catid,catname from tbl_category where catid='$sid'");
+              <?php $sql=mysqli_query($conn,"select catid,catname from tbl_category");
 while($row=mysqli_fetch_array($sql))
 {
     ?>

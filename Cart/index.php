@@ -60,7 +60,6 @@
             <div class="card-body p-1">
               <h4 class="card-title text-center text-info"><?= $row['cname'] ?></h4>
               <h5 class="card-text text-center text-danger"><i class="fas fa-rupee-sign"></i>&nbsp;&nbsp;<?= number_format($row['fees'],2) ?>/-</h5>
-              <h6 class="card-title text-center text-info"><?= $row['cstart'] ?></h6>
             </div>
             <div class="card-footer p-1">
               <form action="" class="form-submit">

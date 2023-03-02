@@ -55,9 +55,9 @@
             </select>
        </div> 
 
-    <!--   <div class="input-group">
+  <!--  <div class="input-group">
         <label>Role</label>
-            <select name="role_type" id="role_type">
+            <select name="role" id="role_type">
               <option value="" selected disabled >Select</option>
               <option value="0">Tutor</option>
               <option value="1">Student</option>

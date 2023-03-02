@@ -38,6 +38,17 @@ TemplateMo 573 EduWell
 https://templatemo.com/tm-573-eduwell
 
 -->
+<script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings = 
+            {"appId":"21fbaa0a826f44ce4d4a3092f2eb37146","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
   </head>
 
 <body>
@@ -58,22 +69,38 @@ https://templatemo.com/tm-573-eduwell
                       <!-- ***** Menu Start ***** -->
                       <ul class="nav">
                           <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                          <li><a href="#">Instructors</a></li>
+                          <li><a href="insert.php">Instructors</a></li>
                           <li><a href="shopping/category.php">Courses</a></li>
                           <li class="has-sub">
-                              <a href="javascript:void(0)">Pages</a>
+                              <a href="javascript:void(0)">Assignments</a>
                               <ul class="sub-menu">
-                                <li><a href="courseadddisplay.php">View Course </a></li>
-                                  <li><a href="">Course</a></li>
-                                  <li><a href="">Our Services</a></li>
+                                <li><a href="insert.php">Add Assignments</a></li>
+                                  <li><a href="pdfview.php">View Assignments</a></li>
+                                 <!-- <li><a href="">Our Services</a></li>
                                   
-                                  <li><a href="">logout</a></li>
+                                  <li><a href="">logout</a></li>-->
                               </ul>
                           </li>
-                          <li class="scroll-to-section"><a href="">Courses</a></li> 
+                          <li class="has-sub">
+                              <a href="javascript:void(0)">Study Materials</a>
+                              <ul class="sub-menu">
+                                <li><a href="Studymaterials/studymaterials.php">Add Study Materials</a></li>
+                                  <li><a href="Studymaterials/studymaterialview.php">View Study Materials</a></li>
+                  
+                              </ul>
+                          </li>
+                          <li class="has-sub">
+                              <a href="javascript:void(0)">Schedules</a>
+                              <ul class="sub-menu">
+                                <li><a href="Studymaterials/schedule.php">Add Schedules</a></li>
+                                  <li><a href="Studymaterials/scheduleview.php">View schedules</a></li>
+                  
+                              </ul>
+                          </li>
+                          <li class="scroll-to-section"><a href="></a></li> 
                           <li><a href=""></a></li> 
                           <li class="has-sub">
-                              <a href="javascript:void(0)">Profile</a>
+                              <a href="javascript:void(0)">athira</a>
                               <ul class="sub-menu">
                                 <li><a href="#">Edit Profile </a></li>
                                   <li><a href="">Change Password</a></li>
