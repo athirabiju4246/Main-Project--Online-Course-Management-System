@@ -3,10 +3,10 @@
 	require 'config.php';
 
 	// Add products into the cart table
-	if (isset($_POST['pid'])) {
-	  $pid = $_POST['pid'];
-	  $pname = $_POST['pname'];
-	  $pprice = $_POST['pprice'];
+	if (isset($_POST['add_to_cart'])) {
+	  $pid = $_POST['cid'];
+	  $pname = $_POST['cname'];
+	  $pprice = $_POST['fees'];
 	  $pimage = $_POST['pimage'];
 	  $pcode = $_POST['pcode'];
 	  $pqty = $_POST['pqty'];
@@ -20,8 +20,8 @@
 	  $code = $r['product_code'] ?? '';
 
 	  if (!$code) {
-	    $query = $conn->prepare('INSERT INTO cart (product_name,product_price,product_image,qty,total_price,product_code) VALUES (?,?,?,?,?,?)');
-	    $query->bind_param('ssssss',$pname,$pprice,$pimage,$pqty,$total_price,$pcode);
+	    $query = $conn->prepare('INSERT INTO cart (cname,fees,pimage,qty,total_price) VALUES (?,?,?,?,?,?)');
+	    $query->bind_param('ssssss',$cname,$fees,$pimage,$pqty,$total_price,$pcode);
 	    $query->execute();
 
 	    echo '<div class="alert alert-success alert-dismissible mt-2">

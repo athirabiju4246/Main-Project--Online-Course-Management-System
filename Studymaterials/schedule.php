@@ -51,7 +51,7 @@ if(isset($_POST['submit']))
        </div> 
        <div class="inputfield">
           <label>Link:</label>
-          <input type="text" class="input" name="link" placeholder="" required>
+          <input type="Link" class="input" name="link" placeholder="" required>
        </div>
       <div class="inputfield">
         <input type="submit" value="Apply" name="submit" class="btn">

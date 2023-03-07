@@ -103,7 +103,7 @@ if(isset($_POST['submit']))
      </div> 
        <div class="inputfield">
           <label>Start Date</label>
-          <input type="date" class="input" name="cstart" placeholder="Start Date"  id="myDate" min="2023-11-25" max="" >
+          <input type="date" class="input" name="cstart" placeholder="Start Date"  id="myDate" min="2023-03-02" max="" >
           <script>
             function myFunction() {
               var x = document.getElementById("myDate").max = "2014-01-01";
@@ -132,7 +132,7 @@ if(isset($_POST['submit']))
         <input type="text" class="input" name="description" placeholder="Description">
      </div> 
      <div class="inputfield">           
-                                        <label for="image">Product image</label>
+                                        <label for="image">Course image</label>
                                         <input type="file" class="form-control" accept="image/gif, image/jpeg, image/png, image/jpg"  name="pimage" id="image" required>
                                     </div>
       <div class="inputfield">

@@ -46,9 +46,10 @@ if(isset($_POST['sub']))
     }
     else if($_SESSION['role']=='student')
     {
+      $_SESSION['email']= "$email";
       echo 4;
       $_SESSION['message']="Welcome";
-       header("location:deshome.html");
+       header("location:coursecart\shopping\category.php");
       exit(0);
     }
 }

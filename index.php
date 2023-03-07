@@ -296,7 +296,7 @@ https://templatemo.com/tm-573-eduwell
                       <div>
                         <div class="left-image">
                           <img src="assets/images/courses-01.jpg" alt="">
-                          <div class="price"><h6>$128</h6></div>
+                          <div class="price"><h6>Rs:500</h6></div>
                         </div>
                         <div class="right-content">
                           <h4>Primary</h4>
@@ -333,14 +333,14 @@ https://templatemo.com/tm-573-eduwell
                       <div>
                         <div class="left-image">
                           <img src="assets/images/courses-03.jpg" alt="">
-                          <div class="price"><h6>$184</h6></div>
+                          <div class="price"><h6>RS.184</h6></div>
                         </div>
                         <div class="right-content">
                           <h4>Higher Secondary</h4>
                           <p>Quinoa roof party squid prism sustainable letterpress cray hammock tumeric man bun mixtape tofu subway tile cronut. Deep v ennui subway tile organic seitan.<br><br>Kogi VHS freegan bicycle rights try-hard green juice probably haven't heard of them cliche la croix af chillwave.</p>
                           <span>28 Hours</span>
                           <span>4 Weeks</span>
-                          <span class="last-span">1 Certificate</span>
+                          <span class="last-span"></span>
                           <div class="text-button">
                             <a href="contact-us.html">Subscribe Course</a>
                           </div>
@@ -351,12 +351,12 @@ https://templatemo.com/tm-573-eduwell
                       <div>
                         <div class="left-image">
                           <img src="assets/images/courses-04.jpg" alt="">
-                          <div class="price"><h6>$76</h6></div>
+                          <div class="price"><h6></h6></div>
                         </div>
                         <div class="right-content">
                           <h4>WordPress Introduction</h4>
                           <p>Quinoa roof party squid prism sustainable letterpress cray hammock tumeric man bun mixtape tofu subway tile cronut. Deep v ennui subway tile organic seitan.<br><br>Kogi VHS freegan bicycle rights try-hard green juice probably haven't heard of them cliche la croix af chillwave.</p>
-                          <span>48 Hours</span>
+                          <span></span>
                           <span>4 Weeks</span>
                           <span class="last-span"></span>
                           <div class="text-button">
