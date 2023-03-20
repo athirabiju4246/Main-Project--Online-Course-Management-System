@@ -1,9 +1,16 @@
-<?php
+<?php	
+  session_start();
 	include 'config.php';
+	$email=$_SESSION['email'];
+	$sqlq="SELECT logid from tbl_login where email='$email'";
+    $resu = mysqli_query($conn, $sqlq);
+    $row = mysqli_fetch_assoc($resu);
+	  $logid= $row['logid'];
+	echo $logid;
 	$targetDir="shopping/cimages/";
 if(isset($_POST['submit']))
 {
-	
+	 
 	$catid = $_POST['catid']; 
   $cname = $_POST['cname'];
   $subcatid = $_POST['subcatid'];
@@ -17,7 +24,7 @@ if(isset($_POST['submit']))
   
   move_uploaded_file($_FILES["pimage"]['tmp_name'],$targetFilePath);
 
-	$sql = "INSERT INTO `tbl_courseadd` (`catid`, `subcatid`, `cname`, `subcode`, `cstart`, `cend`, `fees`, `description`, `pimage`, `status`) VALUES ('$catid','$subcatid','$cname','$subcode','$cstart','$cend','$fees', '$description', '$pimage', '1')";
+	$sql = "INSERT INTO `tbl_courseadd` (`logid`, `catid`, `subcatid`, `cname`, `subcode`, `cstart`, `cend`, `fees`, `description`, `pimage`, `status`) VALUES ('$logid','$catid','$subcatid','$cname','$subcode','$cstart','$cend','$fees', '$description', '$pimage', '1')";
 	$result = mysqli_query($conn,$sql);
 	if($result){
 		echo "New record added";

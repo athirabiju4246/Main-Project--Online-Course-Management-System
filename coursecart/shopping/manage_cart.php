@@ -10,7 +10,7 @@
             $cid = $_POST['cid'];
             $subcatid = $_POST['subcatid'];
             
-           // $quantity=$_POST['quantity'];
+            $quantity=$_POST['quantity'];
            $sqlq="SELECT logid from tbl_login where email='$email'";
             $resu = mysqli_query($conn, $sqlq);
             $row = mysqli_fetch_assoc($resu);
@@ -31,7 +31,7 @@
                 }
             }else{
         
-                $addtocart_res= mysqli_query($conn,"INSERT INTO cart VALUES(null,$cid,$logid)");
+                $addtocart_res= mysqli_query($conn,"INSERT INTO cart VALUES(null,$cid,$logid,$quantity)");
                 if(mysqli_insert_id($conn) >= 0){
                    echo "<script>
                        alert('Product added to cart successfully.');

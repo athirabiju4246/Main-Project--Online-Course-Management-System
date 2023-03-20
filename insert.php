@@ -23,6 +23,30 @@
     </div>  
     <div class="form">
     <div class="inputfield">
+                                    <?php
+                                    $con=mysqli_connect("localhost","root","","tutor");
+                                    
+                                    
+                                    $sql=mysqli_query($con,"select * from tbl_subcategory WHERE status=1"); 
+                                    ?>
+                                    <label>Subcategory Name</label><br>
+                                    
+                                    
+                                    <select   name="subcatid" id="sub_category" onchange="showResult(this.value)" class="form-control m-bot15" required >
+                                    <option value="">--select--</option>
+                                    <?php
+                                    while($row=mysqli_fetch_array($sql))
+                                    {
+                                    
+                                    ?>
+                                    <option value="<?php echo $row[0] ?>" ><?php echo $row[2] ?></option>
+                                    <?php
+                                    
+                                    }
+                                    ?>
+                                    
+                                    </select></div>
+    <div class="inputfield">
       <label>Title:</label>
             <input type="text" id="Title" name="Title" placeholder="Title">
             </div> 

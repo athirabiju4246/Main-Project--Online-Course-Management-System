@@ -54,7 +54,7 @@ echo "ERROR: Could not able to execute $sql2. " . mysqli_error($conn);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REGISTRATION</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="reg.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 		<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
@@ -107,7 +107,7 @@ echo "ERROR: Could not able to execute $sql2. " . mysqli_error($conn);
         <label>Role</label>
             <select name="role" id="role_type">
               <option value="" selected disabled >Select</option>
-              <option value="0">Tutor</option>
+              <option value="0">teacher</option>
               <option value="1">Student</option>
             </select>
        </div>-->

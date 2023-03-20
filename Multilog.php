@@ -32,6 +32,7 @@ if(isset($_POST['sub']))
 
     if($_SESSION['role']=='admin')
     {
+      $_SESSION['logid']= "$logid";
       echo 2;
       $_SESSION['message']="Welcome";
       header("location:Adminpanel.php");

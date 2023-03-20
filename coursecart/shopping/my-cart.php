@@ -140,7 +140,7 @@ table {
   margin-bottom: 25px;
 }
 td {
-	border-bottom: 1px solid #CDC1A7;
+	border-bottom: 1px solid ;
   padding: 50px;
 }
 th {
@@ -189,8 +189,7 @@ input.invalid {
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="index.php"style="font-size:17px">Home</a></li>
-				<li class='active'style="font-size:17px">Shopping Cart</li>
+				
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -205,7 +204,7 @@ input.invalid {
 		<body>
 
 							<div class="text-center border rounded bg-light my-5 m-5">
-								<h3>MY ORDER</h3>
+								<h3>CART</h3>
 							</div>
 
 							<div id="mycart_div" class="m-5">
@@ -216,7 +215,7 @@ input.invalid {
 											<th scope="col">Item Name</th>
 											
 											<th scope="col">Price</th>
-										
+										   
 											<th scope="col">Total</th>
 											<th scope="col">Action</th>
 										</tr>
@@ -259,8 +258,8 @@ input.invalid {
 													$prod_sql= mysqli_query($conn,"SELECT * from tbl_courseadd WHERE cid=$cid");
 													if(mysqli_num_rows($prod_sql) == 1){
 														$pred_details_res= mysqli_fetch_array($prod_sql);
-														//$each_total= $row["qty"]*$pred_details_res["fees"];
-														//$all_total+=$each_total;
+														$each_total= $row["quantity"]*$pred_details_res["fees"];
+														$all_total+=$each_total;
 														
 														echo"
 															<tr>
@@ -268,20 +267,15 @@ input.invalid {
 																
 																
 																<td><p id='prod_name'>".$pred_details_res["cname"]."</p></td>
-																<td>
+																
 																
   </td>
 																<td>".$pred_details_res["fees"]."</td>
 
 																
-																<td>
-																	<form action='manage_cart.php' method = 'POST'>
-
-																		<input type='text' name='product_id' value=".$row["cid"]." hidden>
-			
-																		<button name='update_Item'id='cartupdate' class='btn btn-sm btn-outline-success '>UPDATE</button>
-																	</form>
-																</td>
+															
+															<td class='itotal'>".$each_total."</td>
+																
 																
 																
 																<td>
@@ -324,112 +318,7 @@ input.invalid {
 	</div>
 </div><!-- .shopping-cart-table -->	
 <br>
-<div class="col-md-4 col-sm-12 estimate-ship-tax">
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>
-					<span class="estimate-title">Shipping Address</span>
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-				<tr>
-					<td>
-						
-					<div class="form-group">
-<?php
-$_SESSION['email']=$email;
-$sqlq="SELECT logid from login where email='$email'";
-$resu = mysqli_query($con, $sqlq);
-$row = mysqli_fetch_assoc($resu);
-$logid= $row['logid'];
-$query=mysqli_query($con,"select * from userreg where logid='$logid'");
-while($row=mysqli_fetch_array($query))
-{
-?>
 
-<div class="form-group">
-					    <label class="info-title" for="Billing Address">Billing Address<span>*</span></label>
-					    <textarea id="billingaddress"class="form-control unicase-form-control text-input" name="billingaddress" required ><?php echo $row['billingAddress'];?></textarea>
-						</div>
-
-
-					  <div class="form-group">
-					    <label class="info-title" for="Billing City">Billing City <span>*</span></label>
-					    <input type="text" id="city"class="form-control unicase-form-control text-input" id="billingcity" name="billingcity" required="required" value="<?php echo $row['billingCity'];?>" >
-					  </div>
- <div class="form-group">
-					    <label class="info-title" for="Billing Pincode">Billing Pincode <span>*</span></label>
-					    <input type="text" id="code"class="form-control unicase-form-control text-input" id="billingpincode" name="billingpincode" required="required" value="<?php echo $row['billingPincode'];?>" >
-					  </div>
-
-
-					  <button type="submit" name="update" class="btn-upper btn btn-primary checkout-page-button">Update</button>
-			
-					<?php } ?>
-		
-						</div>
-					
-					</td>
-				</tr>
-		</tbody><!-- /tbody -->
-	</table><!-- /table -->
-</div>
-
-<div class="col-md-4 col-sm-12 estimate-ship-tax">
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>
-					<span class="estimate-title">Billing Address</span>
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-				<tr>
-					<td>
-						<div class="form-group">
-
-		<?php
-		$_SESSION['email']=$email;
-		$sqlq="SELECT logid from login where email='$email'";
-		$resu = mysqli_query($con, $sqlq);
-		$row = mysqli_fetch_assoc($resu);
-		$logid= $row['logid'];
-$query=mysqli_query($con,"select * from userreg where logid='$logid'");
-while($row=mysqli_fetch_array($query))
-{
-?>
-
-<div class="form-group">
-					    <label class="info-title" for="Shipping Address">Shipping Address<span>*</span></label>
-					    <textarea class="form-control unicase-form-control text-input"  name="shippingaddress" required /><?php echo $row['shippingAddress'];?></textarea>
-						
-						</div>
-
-
-					  <div class="form-group">
-					    <label class="info-title" for="Billing City">Shipping City <span>*</span></label>
-					    <input type="text" class="form-control unicase-form-control text-input" id="shippingcity" name="shippingcity" required="required" value="<?php echo $row['shippingCity'];?>" />
-					  </div>
- <div class="form-group">
-					    <label class="info-title" for="Billing Pincode">Shipping Pincode <span>*</span></label>
-					    <input type="text" class="form-control unicase-form-control text-input" id="shippingpincode" name="shippingpincode" required="required" value="<?php echo $row['shippingPincode'];?>" >
-					  </div>
-
-
-					  <button type="submit" name="shipupdate" class="btn-upper btn btn-primary checkout-page-button">Update</button>
-					<?php } ?>
-
-		
-						</div>
-					
-					</td>
-				</tr>
-		</tbody><!-- /tbody -->
-	</table><!-- /table -->
-</div>
 	
 <form action=""method="post">
 <div class="col-md-4 col-sm-12 cart-shopping-total">

@@ -192,7 +192,7 @@ while ($row=mysqli_fetch_array($ret))
 							<?php
 								$cid= $row['cid'];
 								$login_id= $_SESSION['login_id'];
-								$check_isbooked= mysqli_query($conn,"SELECT * from tbl_booking WHERE stid=$login_id AND cid=$cid AND status=1");
+								$check_isbooked= mysqli_query($conn,"SELECT * from tbl_booking WHERE logid=$login_id AND cid=$cid AND status='pending'");
 								if(mysqli_num_rows($check_isbooked) > 0){
 									?>
 										<p>Already booked</p>

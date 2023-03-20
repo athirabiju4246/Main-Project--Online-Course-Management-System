@@ -175,7 +175,8 @@ while ($row=mysqli_fetch_array($ret))
 				<span class="price">
 					Rs. <?php echo htmlentities($row['fees']);?>			</span>
 										     <span class="price-before-discount">Rs. <?php echo htmlentities($row['fees']);?></span>
-											<!-- Quantity<input class='text-center iquantity' type='number'  name='quantity' value='".$row["qty"]."' min='1' max='10'>-->
+											 <span class="price-before-discount"><?php echo htmlentities($row['quantity']);?></span><br>
+							Enrollment capacity: 150<input class='text-center iquantity' type='number'  name='quantity' value='".$row["quantity"]."' min='1' max='1'>
 			</div><!-- /.product-price -->
 			
 		</div><!-- /.product-info -->

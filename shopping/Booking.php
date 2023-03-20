@@ -8,7 +8,7 @@ if(isset($_POST['submit']))
     $id=$_POST['cid'];
     $sid= $_GET['sid'];
 
-    $booking_res= mysqli_query($conn,"INSERT INTO tbl_booking VALUES(null,$login_id,$id,1)");
+    $booking_res= mysqli_query($conn,"INSERT INTO tbl_booking VALUES(null,$login_id,$id,'pending')");
     if($booking_res){
         echo "<script>
         alert('Booked successfully');

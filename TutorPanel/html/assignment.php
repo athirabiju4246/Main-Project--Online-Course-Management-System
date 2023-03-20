@@ -1,32 +1,4 @@
-<?php
-        include 'db.php';
 
-        if (isset($_POST['submit'])) {
-          $Title = $_POST['Title'];
-          $sdate = $_POST['sdate'];
-          $edate = $_POST['edate'];
-          $stime = $_POST['stime'];
-          $send = $_POST['send'];
-
-          $pdf=$_FILES['pdf']['name'];
-          $pdf_type=$_FILES['pdf']['type'];
-          $pdf_size=$_FILES['pdf']['size'];
-          $pdf_tem_loc=$_FILES['pdf']['tmp_name'];
-          $pdf_store="pdf/".$pdf;
-
-          move_uploaded_file($pdf_tem_loc,$pdf_store);
-
-          $sql="INSERT INTO pdf_file(`logid`, `pdf`, `Title`, `sdate`, `edate`, `stime`, `send`) values('$logid', '$pdf','$Title', '$sdate', '$edate', '$stime', '$send')";
-      
-          $query=mysqli_query($conn,$sql);
-
-
-
-        }
-
-
-
-         ?>
 <!DOCTYPE html>
 <html
   lang="en"
@@ -349,17 +321,7 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Add Assignment</span></h4>
-
-              <div class="row">
-                <div class="col-md-12">
-                  <ul class="nav nav-pills flex-column flex-md-row mb-3">
-          
-
-  
       <div class="wrapper">
-    <div class="title">
-      Add Assignment
-    </div>  
     <div class="form" align="center">
     <div class="inputfield">
       <label>Title:</label>

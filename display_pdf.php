@@ -17,11 +17,12 @@
     <div class="div1">
       <?php
       include 'db.php';
-      $sql="SELECT pdf from pdf_file";
+      $id=$_REQUEST['id'];
+      $sql="SELECT pdf from pdf_file WHERE id='$id'";
       $query=mysqli_query($conn,$sql);
       while ($info=mysqli_fetch_array($query)) {
         ?>
-      <embed type="application/pdf" src="pdf/<?php echo $info['pdf'] ; ?>" width="900" height="500">
+      <embed type="application/pdf" src="pdf/<?php echo $info['pdf'] ; ?>" width="1300" height="550">
     <?php
       }
 
