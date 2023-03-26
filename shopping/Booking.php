@@ -12,7 +12,7 @@ if(isset($_POST['submit']))
     if($booking_res){
         echo "<script>
         alert('Booked successfully');
-        window.location.href='../shopping/sub-category.php?sid=$sid';
+        window.location.href='sub-category.php?sid=$sid';
         </script>";
     }
     else{

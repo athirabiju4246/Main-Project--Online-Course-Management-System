@@ -128,7 +128,7 @@ td {
     <h1 align="center">Course List</h1>
     <h1 align="center">Course List</h1>
   
-    <table style="width:75%"cellpadding="10" cellspacing="4" border="3" align="center">
+    <table style="width:95%"cellpadding="20" cellspacing="4" border="4" align="center">
               
               <tr>
                   <th>Course No</th>

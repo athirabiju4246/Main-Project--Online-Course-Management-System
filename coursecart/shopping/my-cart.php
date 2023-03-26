@@ -7,11 +7,18 @@
     $resu = mysqli_query($conn, $sqlq);
     $row = mysqli_fetch_assoc($resu);
 	$logid= $row['logid'];
+	
+	echo $email;
 
 $sql = mysqli_query($conn,"SELECT * from cart where logid='$logid'");
 while($row=mysqli_fetch_array($sql)){
   $caid = $row['caid'];
+  
 }
+$sql98 = mysqli_query($conn,"SELECT * from tbl_login where logid='$logid'");
+$row98=mysqli_fetch_array($sql98);
+  $email = $row98['email'];
+  
 
 // code for billing address updation
 if(isset($_POST['update']))
@@ -53,7 +60,8 @@ echo "<script>alert('Shipping Address has been updated');</script>";
 		<meta name="author" content="">
 	    <meta name="keywords" content="MediaCenter, Template, eCommerce">
 	    <meta name="robots" content="all">
-
+		<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 	    <title>My Cart</title>
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="assets/css/main.css">
@@ -94,9 +102,7 @@ echo "<script>alert('Shipping Address has been updated');</script>";
 		<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 	
-</head>
-	
-		
+
 			<title>cart</title>
 			<style>
 				#mycart_div{
@@ -195,13 +201,15 @@ input.invalid {
 	</div><!-- /.container -->
 </div><!-- /.breadcrumb -->
 <form method="post" action="#">
+<input type="hidden" id="name1" value="<?php echo $_SESSION['email']; ?>">
+
 <div class="body-content outer-top-xs">
 <div class="container">
 	<div class="row inner-bottom-sm">
 		<div class="shopping-cart">
 			<div class="col-md-12 col-sm-12 shopping-cart-table ">
             <div class="table-responsive">			
-		<body>
+		
 
 							<div class="text-center border rounded bg-light my-5 m-5">
 								<h3>CART</h3>
@@ -309,11 +317,7 @@ input.invalid {
 
 
 
-							<script>
-								
-								var iquantity=document.getElementsByClassName('quantity');
-								function
-								</script>
+							
 								
 	</div>
 </div><!-- .shopping-cart-table -->	
@@ -336,40 +340,37 @@ input.invalid {
 		<tbody>
 				<tr>
 					<td>
-						<div class="cart-checkout-btn pull-right">
 						
-<a href="payment-method.php" class="btn btn-primary"style = "position:relative; left:-30px; top:2px;background-color:#abd07e">PROCEED TO CHECKOUT</a>
-									
-						</div>
+						<input type="button" id="rzp-button1" name="btn" value="pay now" class="btn btn-primary" onclick="pay_now()"/>									
 					</td>
 				</tr>
 		</tbody><!-- /tbody -->
 	</table>
 
 </div>			
-</form>
+</form></form>
 </div>
 		</div> 
 
 </div>
 </div>
-</form>
+
 <?php include('includes/footer.php');?>
   
 
-								<script>
-//   console.log("hello");
-// var amt ="100";
+<script>
+
     function pay_now(){
-		var name = jQuery('#name1').val();
+		var name = jQuery('#name1');
 		console.log(name);
 		
         var amount=<?php echo $all_total ?>;
+		alert(amount);
         var options =  {
-            "key": "rzp_test_EM7mP7PTRdcw92", // Enter the Key ID generated from the Dashboard
+            "key": "rzp_test_5z2jSLcVAQb8Pa", // Enter the Key ID generated from the Dashboard
             "amount": amount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             "currency": "INR",
-            "name": "Art Gallery",
+            "name": "Course Management",
             "description": "Test Transaction",
             "image": "https://example.com/your_logo",
             "handler":function(response){

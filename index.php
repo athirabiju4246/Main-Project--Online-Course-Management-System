@@ -1,13 +1,19 @@
 <?php
 session_start();
-
-if(isset($_SESSION['logid'])){
-    $islogged=$_SESSION['logid'];
-    if($islogged==false){
-        header('Location: Multilogin.php');
+	include 'config.php';
+	$email=$_SESSION['email'];
+	$sqlq="SELECT logid from tbl_login where email='$email'";
+    $resu = mysqli_query($conn, $sqlq);
+    $row = mysqli_fetch_assoc($resu);
+	  $logid= $row['logid'];
+	echo $logid;
+//if(isset($_SESSION['logid'])){
+  //  $islogged=$_SESSION['logid'];
+    //if($islogged==false){
+      //  header('Location: Multilogin.php');
         
-    }
-}
+    //}
+//}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +75,7 @@ https://templatemo.com/tm-573-eduwell
                       <!-- ***** Menu Start ***** -->
                       <ul class="nav">
                           <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                          <li><a href="insert.php">Instructors</a></li>
+                          <li><a href="shopping/viewcourses.php">Instructors</a></li>
                           <li><a href="shopping/category.php">Courses</a></li>
                           <li class="has-sub">
                               <a href="javascript:void(0)">Assignments</a>

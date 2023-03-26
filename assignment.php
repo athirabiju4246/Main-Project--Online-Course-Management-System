@@ -1,6 +1,11 @@
 <?php
 	include 'config.php';
-	$targetDir="shopping/cimages/";
+  $email=$_SESSION['email'];
+	$sqlq="SELECT logid from tbl_login where email='$email'";
+    $resu = mysqli_query($conn, $sqlq);
+    $row = mysqli_fetch_assoc($resu);
+	  $logid= $row['logid'];
+	echo $logid;
 if(isset($_POST['submit']))
 {
 	

@@ -40,6 +40,7 @@ if(isset($_POST['sub']))
     }
     else if($_SESSION['role']=='teacher')
     {
+      $_SESSION['logid']= "$logid";
       echo 3;
       $_SESSION['message']="Welcome";
        header("location:index.php");

@@ -1,7 +1,13 @@
 <?php
+session_start();
     date_default_timezone_set('Asia/Manila');
     require_once 'conn.php';
- 
+    $email=$_SESSION['email'];
+	$sqlq="SELECT logid from tbl_login where email='$email'";
+    $resu = mysqli_query($conn, $sqlq);
+    $row = mysqli_fetch_assoc($resu);
+	  $logid= $row['logid'];
+      echo $email;
     if(ISSET($_POST['save'])){
         $catid = $_POST['catid'];
         $subcatid = $_POST['subcatid'];

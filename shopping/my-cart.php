@@ -8,9 +8,9 @@
     $row = mysqli_fetch_assoc($resu);
 	$logid= $row['logid'];
 
-$sql = mysqli_query($conn,"SELECT * from tbl_cart where logid='$logid'");
+$sql = mysqli_query($conn,"SELECT * from tbl_booking where logid='$logid'");
 while($row=mysqli_fetch_array($sql)){
-  $caid = $row['caid'];
+  $bid = $row['bid'];
 }
 
 // code for billing address updation
@@ -54,7 +54,7 @@ echo "<script>alert('Shipping Address has been updated');</script>";
 	    <meta name="keywords" content="MediaCenter, Template, eCommerce">
 	    <meta name="robots" content="all">
 
-	    <title>Booking</title>
+	    <title>My Cart</title>
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="assets/css/main.css">
 	    <link rel="stylesheet" href="assets/css/green.css">
@@ -140,7 +140,7 @@ table {
   margin-bottom: 25px;
 }
 td {
-	border-bottom: 1px solid #CDC1A7;
+	border-bottom: 1px solid ;
   padding: 50px;
 }
 th {
@@ -189,13 +189,12 @@ input.invalid {
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="index.php"style="font-size:17px">Home</a></li>
-				<li class='active'style="font-size:17px">Shopping Cart</li>
+				
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
 </div><!-- /.breadcrumb -->
-<form method="post" action="manage_cart.php">
+<form method="post" action="#">
 <div class="body-content outer-top-xs">
 <div class="container">
 	<div class="row inner-bottom-sm">
@@ -205,7 +204,7 @@ input.invalid {
 		<body>
 
 							<div class="text-center border rounded bg-light my-5 m-5">
-								<h3>MY ORDER</h3>
+								<h3>Courses</h3>
 							</div>
 
 							<div id="mycart_div" class="m-5">
@@ -214,10 +213,10 @@ input.invalid {
 										<tr>
 											<th scope="col">Sr.No.</th>
 											<th scope="col">Course Name</th>
+											<th scope="col">Class Name</th>
+											<th scope="col">Price</th>
+										   
 											
-											<th scope="col">Fees</th>
-										
-											<!--<th scope="col">Total</th>-->
 											<th scope="col">Action</th>
 										</tr>
 									</thead>
@@ -242,24 +241,24 @@ input.invalid {
 									$row = mysqli_fetch_assoc($resu);
 									$logid= $row['logid'];
 									
-									$sql = mysqli_query($conn,"SELECT * from tbl_cart where logid='$logid'");
+									$sql = mysqli_query($conn,"SELECT * from tbl_booking where logid='$logid'");
 									while($row=mysqli_fetch_array($sql)){
-									  $caid = $row['caid'];
+									  $bid = $row['bid'];
 									}
 											$all_total=0;
 											$sr=0;
 											
 											
-											$mycart_record_res= mysqli_query($conn,"SELECT * from tbl_courseadd WHERE cid='$cid' ");
+											$mycart_record_res= mysqli_query($conn,"SELECT * from tbl_booking WHERE logid='$logid' ");
 											if(mysqli_num_rows($mycart_record_res) > 0)
 											{
 												foreach($mycart_record_res as $row){
 													$sr++;
 													$cid= $row['cid'];
-													$prod_sql= mysqli_query($conn,"SELECT * FROM tbl_cart JOIN tbl_login ON tbl_cart.logid = tbl_login.logid ");
+													$prod_sql= mysqli_query($conn,"SELECT * from tbl_courseadd WHERE cid='$cid'");
 													if(mysqli_num_rows($prod_sql) == 1){
 														$pred_details_res= mysqli_fetch_array($prod_sql);
-														//$each_total= $row["qty"]*$pred_details_res["fees"];
+														//$each_total= $row["quantity"]*$pred_details_res["fees"];
 														//$all_total+=$each_total;
 														
 														echo"
@@ -267,33 +266,37 @@ input.invalid {
 																<td>$sr</td>
 																
 																
-																<td><p id='prod_name'>".$pred_details_res["email"]."</p></td>
+																<td><p id='prod_name'>".$pred_details_res["cname"]."</p></td>
 																
-																
+																<td><p id='prod_name'>".$pred_details_res["subcode"]."</p></td>
   </td>
-																<td>".$pred_details_res["cid"]."</td>
+																<td>".$pred_details_res["fees"]."</td>
 
 																
-																<td>
-																	<form action='manage_cart.php' method = 'POST'>
-
-																		<input type='text' name='product_id' value=".$row["cid"]." hidden>
-			
-																		<button name='update_Item'id='cartupdate' class='btn btn-sm btn-outline-success '>UPDATE</button>
-																	</form>
-																</td>
+															
+															
+																
 																
 																
 																<td>
 																	<form action='manage_cart.php' method='POST'>
 																		<input type='text' name='product_id' value=".$row["cid"]." hidden>
-																		<button name='Remove_Item' class='btn btn-sm btn-outline-danger'>REMOVE</button>
+																		<button name='Remove_Item' class='btn btn-sm btn-outline-danger'>REMOVE</button></td>
+																		</form>
+																		<td>
+																		
+																		<form action='videoadd.php' method='POST'>
+																		
+																			<input type='text' name='cid' value=".$row["cid"]." hidden>
+																			<button name='submit' class='btn btn-sm btn-outline-danger'>View Course</button></td>	
+																		
 																	</form>
 																
 																</td>
 															
 															</tr>
 														";
+														
 													}
 													 
 												}
@@ -324,24 +327,36 @@ input.invalid {
 	</div>
 </div><!-- .shopping-cart-table -->	
 <br>
-<div class="col-md-4 col-sm-12 estimate-ship-tax">
+
+	
+<form action=""method="post">
+<div class="col-md-4 col-sm-12 cart-shopping-total">
 	<table class="table table-bordered">
 		<thead>
 			<tr>
 				<th>
-					<span class="estimate-title">Shipping Address</span>
+					
+					<div class="cart-grand-total">
+						Grand Total<span class="inner-left-md"><?php echo $_SESSION['tp']="$all_total". ".00"; ?></span>
+					</div>
 				</th>
 			</tr>
-		</thead>
+		</thead><!-- /thead -->
 		<tbody>
 				<tr>
 					<td>
+						<div class="cart-checkout-btn pull-right">
 						
-				<!-- /tbody -->
-	</table><!-- /table -->
-</div>
+<a href="payment-method.php" class="btn btn-primary"style = "position:relative; left:-30px; top:2px;background-color:#abd07e">PROCEED TO CHECKOUT</a>
+									
+						</div>
+					</td>
+				</tr>
+		</tbody><!-- /tbody -->
+	</table>
 
-
+</div>			
+</form>
 </div>
 		</div> 
 

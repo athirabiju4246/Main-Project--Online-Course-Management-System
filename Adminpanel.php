@@ -19,7 +19,7 @@
     </div>
       <ul class="nav-links">
         <li>
-          <a href="#" class="active">
+          <a href="Adminpanel.php" class="active">
             <i class='bx bx-grid-alt' ></i>
             <span class="links_name">Dashboard</span>
           </a>
@@ -36,13 +36,13 @@
             <span class="links_name">Booking Course</span>
           </a>
         </li>
-      <!--  <li>
-          <a href="#">
+      <li>
+          <a href="tutorcourses.php">
             <i class='bx bx-pie-chart-alt-2' ></i>
-            <span class="links_name">Analytics</span>
+            <span class="links_name">Tutors</span>
           </a>
         </li>
-        <li>
+       <!-- <li>
           <a href="#">
             <i class='bx bx-coin-stack' ></i>
             <span class="links_name"></span>

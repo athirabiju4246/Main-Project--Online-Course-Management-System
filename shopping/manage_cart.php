@@ -10,7 +10,7 @@
             $cid = $_POST['cid'];
             $subcatid = $_POST['subcatid'];
             
-           // $quantity=$_POST['quantity'];
+            $quantity=$_POST['quantity'];
            $sqlq="SELECT logid from tbl_login where email='$email'";
             $resu = mysqli_query($conn, $sqlq);
             $row = mysqli_fetch_assoc($resu);
@@ -31,7 +31,7 @@
                 }
             }else{
         
-                $addtocart_res= mysqli_query($conn,"INSERT INTO tbl_cart VALUES(null,$cid,$logid)");
+                $addtocart_res= mysqli_query($conn,"INSERT INTO cart VALUES(null,$cid,$logid,$quantity)");
                 if(mysqli_insert_id($conn) >= 0){
                    echo "<script>
                        alert('Product added to cart successfully.');
@@ -78,7 +78,7 @@
             $row = mysqli_fetch_assoc($resu);
             $logid= $row['logid'];
 
-            $del_cart_item_res= mysqli_query($conn,"DELETE FROM tbl_cart WHERE cid=$cid AND logid=$logid");
+            $del_cart_item_res= mysqli_query($conn,"DELETE FROM tbl_booking WHERE cid=$cid AND logid=$logid");
             if($del_cart_item_res){
                 echo "<script>
                     alert('Item deleted from cart successfully.');
@@ -113,7 +113,24 @@
                 </script>";
        }
     }
-        
+      
+    if(isset($_POST['submit']))
+{
+    $login_id= $_SESSION['login_id'];
+    $id=$_POST['cid'];
+    $sid= $_GET['sid'];
+
+    $booking_res= mysqli_query($conn,"INSERT INTO tbl_booking VALUES(null,$login_id,$id,'pending')");
+    if($booking_res){
+        echo "<script>
+        alert('Booked successfully');
+        window.location.href='my-cart.php?sid=$sid';
+        </script>";
+    }
+    else{
+        echo "<script>alert('Booking failed');</script>";
+    }
+}
         
     }
 ?>
