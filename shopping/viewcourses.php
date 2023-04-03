@@ -11,7 +11,7 @@ $email=$_SESSION['email'];
       <html>
         <body>
       <h1 align="center"> Courses</h1>
-      <table style="width:95%"cellpadding="1" cellspacing="4" border="6" align="center">
+      <table style="width:95%"cellpadding="1" cellspacing="4" border="1" align="center">
                     
       <tr>
           <th>Course No</th>
