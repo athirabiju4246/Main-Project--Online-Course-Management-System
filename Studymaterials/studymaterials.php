@@ -9,7 +9,7 @@
     <nav>
   <div class="profile-details">
         <img src="images/profile.jpg" alt="">
-        <span class="admin_name">athira@gmail.com</span>
+        <span class="admin_name"></span>
         <i class='bx bx-chevron-down' ></i>
       </div>
       <form class="" action="studymaterials.php" method="post" enctype="multipart/form-data">
@@ -18,6 +18,7 @@
       Add Study Materials
     </div>  
     <div class="form">
+      
     <div class="inputfield">
       <label>Title:</label>
             <input type="text" id="title" name="title" placeholder="Title">

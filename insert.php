@@ -8,6 +8,7 @@
           $logid= $row['logid'];
         echo $email;
         if (isset($_POST['submit'])) {
+          $cid = $_POST['cid'];
           $Title = $_POST['Title'];
           $sdate = $_POST['sdate'];
           $edate = $_POST['edate'];
@@ -20,7 +21,7 @@
           $pdf_store="pdf/".$pdf;
           move_uploaded_file($pdf_tem_loc,$pdf_store);
 
-          $sql="INSERT INTO pdf_file(`logid`, `pdf`, `Title`, `sdate`, `edate`, `stime`, `send`) values('$logid','$pdf','$Title', '$sdate', '$edate', '$stime', '$send')";
+          $sql="INSERT INTO pdf_file(`logid`,`cid`, `pdf`, `Title`, `sdate`, `edate`, `stime`, `send`) values('$logid','$cid','$pdf','$Title', '$sdate', '$edate', '$stime', '$send')";
       
           $query=mysqli_query($conn,$sql);
         }
@@ -48,27 +49,30 @@
     </div>  
     <div class="form">
     <div class="inputfield">
-                                    <?php
+                                                          <?php
                                     $con=mysqli_connect("localhost","root","","tutor");
                                     
                                     
-                                    $sql=mysqli_query($con,"SELECT tbl_booking.bid,tbl_booking.cid,tbl_login.email FROM tbl_booking INNER JOIN tbl_login ON tbl_booking.logid = tbl_login.logid WHERE tbl_login.role = 'teacher' AND tbl_booking.status='accepted'"); 
-                                    ?>
-                                    <label>Subcategory Name</label><br>
-                                    
-                                    
-                                    <select   name="logid" id="sub_category" onchange="showResult(this.value)" class="form-control m-bot15" required >
-                                    <option value="">--select--</option>
-                                    <?php
-                                    while($row=mysqli_fetch_array($sql))
+                                    if(isset($_GET['cid']))
                                     {
-                                    
+                                    $cid=$_GET['cid'];
+                                    $email=$_SESSION['email'];
+                                         $sqlq="SELECT logid from tbl_login where email='$email'";
+                                         $resu = mysqli_query($conn, $sqlq);
+                                         $row = mysqli_fetch_assoc($resu);
+                                           $logid= $row['logid'];
+                                           
+                                   // $logid=$_POST['logid'];
+                                    $query=mysqli_query($conn,"SELECT tbl_booking.bid, tbl_login.email, tbl_courseadd.cname,tbl_courseadd.cid,tbl_subcategory.class,tbl_booking.status FROM tbl_booking INNER JOIN tbl_login ON tbl_booking.logid = tbl_login.logid INNER JOIN tbl_courseadd ON tbl_booking.cid = tbl_courseadd.cid INNER JOIN tbl_subcategory ON tbl_subcategory.subcatid = tbl_courseadd.subcatid where tbl_login.logid='$logid'");
+                                    while($row=mysqli_fetch_array($query))
+                                    {
                                     ?>
-                                    <option value="<?php echo $row[0] ?>" ><?php echo $row[2] ?></option>
-                                    <?php
-                                    
-                                    }
-                                    ?>
+
+      
+                                     <label>Course Name :</label>
+                                     <?php echo htmlentities($row['cname']);?>
+                                    <input type="hidden" name="cid" class="form-control" placeholder="name" value="<?php echo $row['cid'];?>">
+                                    <?php }} ?> 
                                     
                                     </select></div>
     <div class="inputfield">

@@ -30,6 +30,65 @@ td {
   margin: 4px 2px;
   cursor: pointer;
 }
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.btn {
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .bttn {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  /* .status-button {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: blue;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .status-button:hover {
+    background-color: hotpink;
+  } */
 </style>
 
 <body>
@@ -132,16 +191,17 @@ td {
                 <br>
                 <br>
                 <h1 align="center"> Booking Request</h1>
-<table style="width:95%"cellpadding="1" cellspacing="4" border="6" align="center">
+<table style="width:95%"cellpadding="1" cellspacing="4" border="3" align="center">
               
 <tr>
     <th>Course No</th>
     <th>Class</th>
     <th>Course Name</th>
     <th>Teacher name</th>
+    <th>Status</th>
     <th>Decline</th>
     <th>Accept</th>
-    <th>Status</th>
+   
     
 </tr>
 <?php
@@ -162,14 +222,12 @@ while($row=mysqli_fetch_array($query))
    <td> <?php echo htmlentities($row['cname']);?></td>
 
     <td><?php echo htmlentities($row['email']);?></td>
-    
-    <td><a href="declinebooking.php?bid=<?php echo $row['bid']?>">Decline</a>
+   <td> <?php echo htmlentities($row['status']);?></td>
+    <td><a href="declinebooking.php?bid=<?php echo $row['bid']?>"class="bttn">Decline</a>
                    
 </td>
-<td><a href="acceptbooking.php?bid=<?php echo $row['bid']?>">Accept</a>
+<td><a href="acceptbooking.php?bid=<?php echo $row['bid']?>" class="btn">Accept</a></td>
                    
-</td>
-<td><?php echo htmlentities($row['status']);?></td>
                <!-- <button class="btn btn-info btn-block addItemBtn"><i class="fas fa-cart-plus"></i>&nbsp;Accept</button>-->
               <!-- <td> 
                <a href="process_booking.php?bid=<?php echo $row['bid']?>">Accept</a></td> -->

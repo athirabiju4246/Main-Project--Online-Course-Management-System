@@ -36,6 +36,6 @@ while ($row=mysqli_fetch_array($ret))
     <td> <?php echo htmlentities($row['cname']);?></td>
 
    <td> <?php echo htmlentities($row['class']);?></td>
-   <td><a href="videos/addvideo.php?cid=<?php echo $row['bid']?>&logid=<?php echo $logid; ?>">Add Video</a></td>
-   
+   <td><a href="videos/add.php?cid=<?php echo $row['bid']?>&logid=<?php echo $logid; ?>">Add Video</a></td>
+   <td><a href="../insert.php?cid=<?php echo $row['bid']?>&logid=<?php echo $logid; ?>">Add Assignments</a></td>
             <?php } }?>

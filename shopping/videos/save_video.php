@@ -1,16 +1,11 @@
 <?php
 session_start();
-$email=$_SESSION['email'];
-   
-    require_once 'conn.php'; 
-    if(ISSET($_POST['save'])){      
-	$sqlq="SELECT logid from tbl_login where email='$email'";
-    $resu = mysqli_query($conn, $sqlq);
-    $row = mysqli_fetch_assoc($resu);
-	  $logid= $row['logid'];
-      echo $email;
-        $cname = $_POST['cname'];
-        $class = $_POST['class'];
+    date_default_timezone_set('Asia/Manila');
+    require_once 'conn.php';
+ 
+    if(ISSET($_POST['save'])){
+        $login_id= $_SESSION['login_id'];
+        $cid = $_POST['cid'];
         $title = $_POST['title'];
         $file_name = $_FILES['video']['name'];
         $file_temp = $_FILES['video']['tmp_name'];
@@ -24,17 +19,17 @@ $email=$_SESSION['email'];
                 $name = date("Ymd").time();
                 $location = 'video/'.$name.".".$end;
                 if(move_uploaded_file($file_temp, $location)){
-                    mysqli_query($conn, "INSERT INTO `video` (`logid`, `cname`, `class`, `title`, `name`, `location`) VALUES('$logid', '$cname', '$class', '$title', '$name', '$location')");
-                    echo "<script>alert('Video Uploaded successfully')</script>";
-                    echo "<script>window.location = 'index.php'</script>";
+                    mysqli_query($conn, "INSERT INTO `video` VALUES('','$login_id', '$cid', '$title', '$name', '$location')") or die(mysqli_error());
+                    echo "<script>alert('Video Uploaded')</script>";
+                    echo "<script>window.location = 'viewvideo.php'</script>";
                 }
             }else{
                 echo "<script>alert('Wrong video format')</script>";
-                echo "<script>window.location = '#'</script>";
+                echo "<script>window.location = 'index.php'</script>";
             }
         }else{
             echo "<script>alert('File too large to upload')</script>";
-            echo "<script>window.location = '#'</script>";
+            echo "<script>window.location = 'index.php'</script>";
         }
     }
 ?>

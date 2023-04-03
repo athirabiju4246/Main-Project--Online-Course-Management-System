@@ -1,15 +1,21 @@
 
 <?php
+session_start();
 	include 'db.php';
-	
+$email=$_SESSION['email'];
+                                         $sqlq="SELECT logid from tbl_login where email='$email'";
+                                         $resu = mysqli_query($conn, $sqlq);
+                                         $row = mysqli_fetch_assoc($resu);
+                                           $logid= $row['logid'];
+                                           
 if(isset($_POST['submit']))
 {
 	
-	
+	$cid= $_REQUEST['cid'];
 	$date = $_POST['date'];
   $time = $_POST['time'];
   $link = $_POST['link'];
-	$sql = "INSERT INTO `tbl_schedule`(`date`, `time`, `link`) VALUES ('$date', '$time', '$link')";
+	$sql = "INSERT INTO `tbl_schedule`(`cid`, `date`, `time`, `link`) VALUES ('$cid', '$date', '$time', '$link')";
 	$result = mysqli_query($conn,$sql);
 	if($result){
 		//echo "New record added";
@@ -41,6 +47,34 @@ if(isset($_POST['submit']))
       ADD SCHEDULES
     </div>
     <div class="form">
+    <div class="inputfield">
+                                    <?php
+                                    $con=mysqli_connect("localhost","root","","tutor");
+                                    
+                                    
+                                    if(isset($_GET['cid']))
+                                    {
+                                    $cid=$_GET['cid'];
+                                    $email=$_SESSION['email'];
+                                         $sqlq="SELECT logid from tbl_login where email='$email'";
+                                         $resu = mysqli_query($conn, $sqlq);
+                                         $row = mysqli_fetch_assoc($resu);
+                                           $logid= $row['logid'];
+                                           
+                                   // $logid=$_POST['logid'];
+                                    $query=mysqli_query($conn,"SELECT tbl_booking.bid, tbl_login.email, tbl_courseadd.cname,tbl_subcategory.class,tbl_booking.status FROM tbl_booking INNER JOIN tbl_login ON tbl_booking.logid = tbl_login.logid INNER JOIN tbl_courseadd ON tbl_booking.cid = tbl_courseadd.cid INNER JOIN tbl_subcategory ON tbl_subcategory.subcatid = tbl_courseadd.subcatid");
+                                    while($row=mysqli_fetch_array($query))
+                                    {
+                                    ?>
+
+      
+                                     <label>Course Name :</label>
+                                     <?php echo htmlentities($row['cname']);?>
+                                    <input type="hidden" name="cid" class="form-control" placeholder="name" value="<?php echo $row['cid'];?>">
+                                    <?php }} ?> 
+                                    
+                                    
+                                    </select></div>
        <div class="inputfield">
           <label>Date:</label>
           <input type="Date" class="input" name="date" placeholder="" required>

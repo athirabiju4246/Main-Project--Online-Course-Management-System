@@ -20,13 +20,12 @@
             if($sql_already_exist && mysqli_num_rows($sql_already_exist) > 0){
                 $row = mysqli_fetch_array($sql_already_exist);
                 $quantity = $quantity + $row["quantity"];
-                
-                
-                $update_cart_item = mysqli_query($conn, "UPDATE `cart` SET `quantity`= '$quantity' WHERE cid='$cid' AND `logid` = $logid");
-                if($update_cart_item){
+               
+                $addtocart_res = mysqli_query($conn,"INSERT INTO studentcourse VALUES(null,$cid,$logid)");
+                if(mysqli_insert_id($conn) >= 0){
                     echo "<script>
                     alert('Product added to cart successfully.');
-                        window.href=location='category.php?cid=$cid';
+                       
                     </script>";      
                 }
             }else{

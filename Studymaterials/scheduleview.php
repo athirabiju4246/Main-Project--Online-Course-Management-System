@@ -1,3 +1,12 @@
+<?php
+session_start();
+include 'db.php';
+$email=$_SESSION['email'];
+                                         $sqlq="SELECT logid from tbl_login where email='$email'";
+                                         $resu = mysqli_query($conn, $sqlq);
+                                         $row = mysqli_fetch_assoc($resu);
+                                           $logid= $row['logid'];
+                                           ?>
 <html>
   <body>
     <h4 align="center">Schedule<h4>
@@ -6,10 +15,11 @@
                   <th>No</th>
                   <th>Date</th>
                   <th>Time</th>
-                  <th>Link</th>                 
+                  <th>Link</th> 
+                  <th>Add</th>                 
               </tr>             
               <?php
-              include 'db.php';
+             
               $query=mysqli_query($conn,"select * from tbl_schedule");             
 $cnt=1;
 while($row=mysqli_fetch_array($query))
@@ -21,6 +31,7 @@ while($row=mysqli_fetch_array($query))
                   <td><?php echo htmlentities($row['date']);?></td>
                   <td><?php echo htmlentities($row['time']);?></td>
                   <td><?php echo htmlentities($row['link']);?></td>
+                  <td><a href="schedule.php?id=<?php echo $row['scid']?>&logid=<?php echo $logid; ?>">View</a></td>
               </tr>
               <?php $cnt=$cnt+1; } ?>
               

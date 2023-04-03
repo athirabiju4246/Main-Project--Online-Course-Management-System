@@ -51,7 +51,7 @@ if(isset($_POST['sub']))
       $_SESSION['email']= "$email";
       echo 4;
       $_SESSION['message']="Welcome";
-       header("location:coursecart\shopping\category.php");
+       header("location:studentindex.php");
       exit(0);
     }
 }

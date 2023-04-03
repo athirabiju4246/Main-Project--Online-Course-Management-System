@@ -84,7 +84,8 @@ $sid=$_GET['scid'];
 	            	<h3 class="section-title">shop by</h3>
 	            	<div class="sidebar-filter">
 		            	<!-- =================== SIDEBAR CATEGORY ======================== -->
-<div class="sidebar-widget wow fadeInUp outer-bottom-xs ">
+						<li><a href="../../logout.php">logout</a></li>
+						<div class="sidebar-widget wow fadeInUp outer-bottom-xs ">
 	<div class="widget-header m-t-20">
 		<h4 class="widget-title">Category</h4>
 	</div>

@@ -3,23 +3,6 @@
     <head>
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-        <style>
-            .video-container {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  height: 0;
-  overflow: hidden;
-}
-
-.video-container video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-            </style>
     </head>
 <body>
     <nav class="navbar navbar-default">
@@ -34,8 +17,8 @@
         <hr style="border-top:3px solid #ccc;"/>
         <?php
             require 'conn.php';
- 
-            $query = mysqli_query($conn, "SELECT * FROM `video` ORDER BY `video_id` ASC") or die(mysqli_error());
+            $video_id=$_REQUEST['video_id'];
+            $query = mysqli_query($conn, "SELECT * FROM `video` where video_id='$video_id'") or die(mysqli_error());
             while($fetch = mysqli_fetch_array($query)){
         ?>
         <div class="col-md-12">
