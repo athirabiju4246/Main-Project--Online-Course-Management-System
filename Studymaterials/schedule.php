@@ -11,15 +11,18 @@ $email=$_SESSION['email'];
 if(isset($_POST['submit']))
 {
 	
-	$cid= $_REQUEST['cid'];
+	$logid= $_REQUEST['logid'];
+  $cid= $_REQUEST['cid'];
 	$date = $_POST['date'];
   $time = $_POST['time'];
+  $etime = $_POST['etime'];
+  //$added_on = $_POST['added_on'];
   $link = $_POST['link'];
-	$sql = "INSERT INTO `tbl_schedule`(`cid`, `date`, `time`, `link`) VALUES ('$cid', '$date', '$time', '$link')";
+	$sql = "INSERT INTO `tbl_schedule`(`logid`, `cid`, `date`, `time`,`etime`, `link`) VALUES ('$logid', '$cid', '$date', '$time','$etime','$link')";
 	$result = mysqli_query($conn,$sql);
 	if($result){
-		//echo "New record added";
-		//header('LOCATION:categoryview.php');
+		echo "New record added";
+		header('LOCATION:scheduleview.php');
 	}
 	else{
 	 echo mysqli_error($conn);
@@ -62,7 +65,7 @@ if(isset($_POST['submit']))
                                            $logid= $row['logid'];
                                            
                                    // $logid=$_POST['logid'];
-                                    $query=mysqli_query($conn,"SELECT tbl_booking.bid, tbl_login.email, tbl_courseadd.cname,tbl_subcategory.class,tbl_booking.status FROM tbl_booking INNER JOIN tbl_login ON tbl_booking.logid = tbl_login.logid INNER JOIN tbl_courseadd ON tbl_booking.cid = tbl_courseadd.cid INNER JOIN tbl_subcategory ON tbl_subcategory.subcatid = tbl_courseadd.subcatid");
+                                    $query=mysqli_query($conn,"SELECT tbl_booking.bid, tbl_login.email, tbl_courseadd.cname,tbl_courseadd.cid,tbl_subcategory.class,tbl_booking.status FROM tbl_booking INNER JOIN tbl_login ON tbl_booking.logid = tbl_login.logid INNER JOIN tbl_courseadd ON tbl_booking.cid = tbl_courseadd.cid INNER JOIN tbl_subcategory ON tbl_subcategory.subcatid = tbl_courseadd.subcatid");
                                     while($row=mysqli_fetch_array($query))
                                     {
                                     ?>
@@ -78,10 +81,14 @@ if(isset($_POST['submit']))
        <div class="inputfield">
           <label>Date:</label>
           <input type="Date" class="input" name="date" placeholder="" required>
+       </div> 
+       <div class="inputfield">
+          <label>Start Time:</label>
+          <input type="Time" class="input" name="time" placeholder="" required>
        </div>  
        <div class="inputfield">
-          <label>Time:</label>
-          <input type="Time" class="input" name="time" placeholder="" required>
+          <label>End Time:</label>
+          <input type="Time" class="input" name="etime" placeholder="" required>
        </div> 
        <div class="inputfield">
           <label>Link:</label>
@@ -94,5 +101,6 @@ if(isset($_POST['submit']))
 </div>
 </form>
 <script type="text/javascript" src="date.js"></script>
+
 </body>
 </html>

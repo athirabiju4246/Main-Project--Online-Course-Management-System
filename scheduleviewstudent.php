@@ -129,8 +129,8 @@ tr:nth-child(even) {
       </div>
       
       <div class="profile-details">
-        <img src="images/profile.jpg" alt="">
-        <span class="admin_name">user</span>
+        
+        <span class="admin_name"><?php echo $email ?></span>
         <i class='bx bx-chevron-down' ></i>
       </div>
     </nav>

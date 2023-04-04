@@ -23,9 +23,24 @@ if(isset($_POST['submit']))
   $targetFilePath = $targetDir. $pimage;
   
   move_uploaded_file($_FILES["pimage"]['tmp_name'],$targetFilePath);
+  $sql="select * from tbl_courseadd where (cname='$cname' or subcode='$subcode');";
 
-	$sql = "INSERT INTO `tbl_courseadd` (`logid`, `catid`, `subcatid`, `cname`, `subcode`, `cstart`, `cend`, `fees`, `description`, `pimage`, `status`) VALUES ('$logid','$catid','$subcatid','$cname','$subcode','$cstart','$cend','$fees', '$description', '$pimage', '1')";
-	$result = mysqli_query($conn,$sql);
+  $res=mysqli_query($conn,$sql);
+
+  if (mysqli_num_rows($res) > 0) {
+    
+    $row = mysqli_fetch_assoc($res);
+    if($subcode==isset($row['subcode']) || ($cname==isset($row['cname'])))
+    {
+        $_SESSION['status'] = "You already have an account.Login to continue";
+        echo "Already Registered";
+        
+    }
+
+}
+else{
+	$sql2 = "INSERT INTO `tbl_courseadd` (`logid`, `catid`, `subcatid`, `cname`, `subcode`, `cstart`, `cend`, `fees`, `description`, `pimage`, `status`) VALUES ('$logid','$catid','$subcatid','$cname','$subcode','$cstart','$cend','$fees', '$description', '$pimage', '1')";
+	$result = mysqli_query($conn,$sql2);
 	if($result){
 		echo "New record added";
 		header('LOCATION:courseadddisplay.php');
@@ -33,6 +48,7 @@ if(isset($_POST['submit']))
 	else{
 	 echo mysqli_error($conn);
 	}
+}
 }
 ?>
 <!DOCTYPE html>
@@ -100,9 +116,19 @@ if(isset($_POST['submit']))
                                     </select></div>
        <div class="inputfield">
           <label>Course Name</label>
-          <input type="text" class="input" name="cname" placeholder="Course name" onkeyup="this.value = this.value.toUpperCase();">
+          <input type="text" class="input" name="cname" placeholder="Course name" onkeyup="this.value = this.value.toUpperCase();"onkeypress="return validateInput(event);">
            
        </div>
+       <script>
+function validateInput(event) {
+  var char = event.which || event.keyCode;
+  if (char >= 48 && char <= 57) {
+    event.preventDefault();
+    return false;
+  }
+  return true;
+}
+</script>
        
        <div class="inputfield">
         <label>Subject Code</label>
@@ -110,7 +136,7 @@ if(isset($_POST['submit']))
      </div> 
        <div class="inputfield">
           <label>Start Date</label>
-          <input type="date" class="input" name="cstart" placeholder="Start Date"  id="myDate" min="2023-03-02" max="" >
+          <input type="date" class="input" name="cstart" placeholder="Start Date"  id="myDate" min="2023-04-04" max="" >
           <script>
             function myFunction() {
               var x = document.getElementById("myDate").max = "2014-01-01";
@@ -121,7 +147,7 @@ if(isset($_POST['submit']))
         </div>  
       <div class="inputfield">
           <label>End Date</label>
-          <input type="date"  name="cend" class="input" min="2024-12-31">
+          <input type="date"  name="cend" class="input" min="2024-01-01">
            <script>
             function myFunction() {
               var x = document.getElementById("myDate").max = "2014-01-01";

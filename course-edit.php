@@ -53,8 +53,18 @@ while($row=mysqli_fetch_array($query))
     <input type="hidden"name="cid"value="<?= $row['cid'] ?>">
        <div class="inputfield">
           <label>Course Name</label>
-          <input type="text" class="input" name="cname" placeholder="Name" value="<?= $row['cname'] ?>" required>
-       </div>   
+          <input type="text" class="input" name="cname" placeholder="Name" value="<?= $row['cname'] ?>" onkeyup="this.value = this.value.toUpperCase();"onkeypress="return validateInput(event);"required>
+       </div> 
+       <script>
+function validateInput(event) {
+  var char = event.which || event.keyCode;
+  if (char >= 48 && char <= 57) {
+    event.preventDefault();
+    return false;
+  }
+  return true;
+}
+</script>  
        <div class="inputfield">
         <label>Subject Code</label>
         <input type="text" class="input" name="subcode" placeholder="Subject Code" value="<?= $row['subcode'] ?>" required>

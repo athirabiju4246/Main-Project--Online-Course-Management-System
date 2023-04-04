@@ -34,8 +34,18 @@ if(isset($_POST['submit']))
     <div class="form">
        <div class="inputfield">
           <label>Category Name:</label>
-          <input type="text" class="input" name="catname" placeholder="Category Name" required>
-       </div>   
+          <input type="text" class="input" name="catname" placeholder="Category Name" onkeypress="return validateInput(event);"required>
+       </div>
+       <script>
+function validateInput(event) {
+  var char = event.which || event.keyCode;
+  if (char >= 48 && char <= 57) {
+    event.preventDefault();
+    return false;
+  }
+  return true;
+}
+</script>   
       <div class="inputfield">
         <input type="submit" value="Apply" name="submit" class="btn">
       </div>

@@ -1,3 +1,12 @@
+<?php
+session_start();
+	include 'conn.php';
+	$email=$_SESSION['email'];
+	$sqlq="SELECT logid from tbl_login where email='$email'";
+    $resu = mysqli_query($conn, $sqlq);
+    $row = mysqli_fetch_assoc($resu);
+	  $logid= $row['logid'];
+    ?>
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
@@ -112,8 +121,8 @@ tr:nth-child(even) {
       </div>
       
       <div class="profile-details">
-        <img src="images/profile.jpg" alt="">
-        <span class="admin_name">user</span>
+        
+        <span class="admin_name"><?php echo $email?></span>
         <i class='bx bx-chevron-down' ></i>
       </div>
     </nav>
@@ -138,7 +147,7 @@ tr:nth-child(even) {
     
 </tr>
 <?php
-include 'conn.php';
+
 $query=mysqli_query($conn,"SELECT * from video ");
 $cnt=1;
 while($row=mysqli_fetch_array($query))

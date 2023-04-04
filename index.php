@@ -80,7 +80,7 @@ https://templatemo.com/tm-573-eduwell
                           <li class="has-sub">
                               <a href="javascript:void(0)">Assignments</a>
                               <ul class="sub-menu">
-                                <li><a href="insert.php">Add Assignments</a></li>
+                               <!-- <li><a href="insert.php">Add Assignments</a></li>-->
                                   <li><a href="pdfview.php">View Assignments</a></li>
                                  <!-- <li><a href="">Our Services</a></li>
                                   
@@ -90,15 +90,15 @@ https://templatemo.com/tm-573-eduwell
                           <li class="has-sub">
                               <a href="javascript:void(0)">Study Materials</a>
                               <ul class="sub-menu">
-                                <li><a href="Studymaterials/studymaterials.php">Add Study Materials</a></li>
-                                  <li><a href="Studymaterials/studymaterialview.php">View Study Materials</a></li>
+                                <!--<li><a href="Studymaterials/studymaterials.php">Add Study Materials</a></li>
+                                  <li><a href="Studymaterials/studymaterialview.php">View Study Materials</a></li>-->
                   
                               </ul>
                           </li>
                           <li class="has-sub">
                               <a href="javascript:void(0)">Schedules</a>
                               <ul class="sub-menu">
-                                <li><a href="Studymaterials/schedule.php">Add Schedules</a></li>
+                               <!-- <li><a href="Studymaterials/schedule.php">Add Schedules</a></li>-->
                                   <li><a href="Studymaterials/scheduleview.php">View schedules</a></li>
                   
                               </ul>

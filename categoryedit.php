@@ -48,8 +48,18 @@ while($row=mysqli_fetch_array($query))
     <input type="hidden"name="catid"value="<?= $row['catid'] ?>">
        <div class="inputfield">
           <label>Category Name</label>
-          <input type="text" class="input" name="catname" placeholder="Name" value="<?= $row['catname'] ?>" required>
-       </div>      
+          <input type="text" class="input" name="catname" placeholder="Name" value="<?= $row['catname'] ?>" onkeypress="return validateInput(event);" required>
+       </div> 
+       <script>
+function validateInput(event) {
+  var char = event.which || event.keyCode;
+  if (char >= 48 && char <= 57) {
+    event.preventDefault();
+    return false;
+  }
+  return true;
+}
+</script>     
       <div class="inputfield">
         <input type="submit" value="UPDATE" name="submit" class="btn">
       </div>

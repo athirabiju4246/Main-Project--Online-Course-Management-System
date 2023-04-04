@@ -8,7 +8,7 @@
           $logid= $row['logid'];
         echo $email;
         if (isset($_POST['submit'])) {
-          $cid = $_POST['cid'];
+          $cid = $_REQUEST['cid'];
           $Title = $_POST['Title'];
           $sdate = $_POST['sdate'];
           $edate = $_POST['edate'];
@@ -42,7 +42,7 @@
   <div class="profile-details">
        
       </div>
-      <form class="" action="insert.php" method="post" enctype="multipart/form-data">
+      <form class="" action="insert.php" method="post" enctype="multipart/form-data" name="myForm" onsubmit="return validateForm();">
       <div class="wrapper">
     <div class="title">
       Add Assignment
@@ -100,9 +100,47 @@
         <input id="pdf" type="file" name="pdf" value="" required><br><br>
         </div> 
         <input id="upload" type="submit" name="submit" value="Upload">
-       
-      </form>
+       <script>
+function validateForm() {
+  // get form inputs
+  var title = document.forms["myForm"]["Title"].value;
+  var startDate = document.forms["myForm"]["sdate"].value;
+  var endDate = document.forms["myForm"]["edate"].value;
+  var startTime = document.forms["myForm"]["stime"].value;
+  var endTime = document.forms["myForm"]["send"].value;
+  var file = document.forms["myForm"]["pdf"].value;
 
+  // check if all inputs are filled
+  if (title == "" || startDate == "" || endDate == "" || startTime == "" || endTime == "" || file == "") {
+    alert("Please fill all fields.");
+    return false;
+  }
+
+  // check if start date is before end date
+  if (startDate > endDate) {
+    alert("Start date must be before end date.");
+    return false;
+  }
+
+  // check if start time is before end time when dates are the same
+  if (startDate == endDate && startTime > endTime) {
+    alert("Start time must be before end time.");
+    return false;
+  }
+
+  // file type validation
+  var allowedExtensions = /(\.pdf)$/i;
+  if (!allowedExtensions.exec(file)) {
+    alert("Please upload a PDF file.");
+    return false;
+  }
+
+  // if all validations pass, submit form
+  return true;
+}
+ </script>
+      </form>
+z
     </div>
 
   </body>
