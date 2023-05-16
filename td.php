@@ -136,7 +136,7 @@
                   <th>Delete</th>
                   <th>Edit</th>
               </tr>
-        </thead>  
+               </thead>  
         <tbody> 
         <?php
                         include 'config.php';

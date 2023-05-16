@@ -69,6 +69,12 @@ $email=$_SESSION['email'];
             <span class="links_name">Assignments</span>
           </a>
         </li>
+        <!-- <li>
+          <a href="/Studymaterials/studymaterials.php">
+            <i class='bx bx-coin-stack' ></i>
+            <span class="links_name">Study Materials</span>
+          </a>
+        </li> -->
          <!--  <li>
           <a href="subcategoryview.php">
             <i class='bx bx-book-alt' ></i>
@@ -140,6 +146,7 @@ $email=$_SESSION['email'];
           <th>Add Videos</th>
           <th>Add Assignment</th>
           <th>Add Schedules</th>
+          <!-- <th>Add Study Materials</th> -->
               </tr>
         </thead>  
         <tbody> 
@@ -159,7 +166,8 @@ $email=$_SESSION['email'];
    <td> <?php echo htmlentities($row['class']);?></td>
    <td><a href="videos/add.php?cid=<?php echo $row['bid']?>&logid=<?php echo $logid; ?>">Add Video</a></td>
    <td><a href="../insert.php?cid=<?php echo $row['bid']?>&logid=<?php echo $logid; ?>">Add Assignments</a></td>
-   <td><a href="../Studymaterials/schedule.php?cid=<?php echo $row['bid']?>&logid=<?php echo $logid; ?>">Add Schedules</a></td></tr>
+   <td><a href="../Studymaterials/schedule.php?cid=<?php echo $row['bid']?>&logid=<?php echo $logid; ?>">Add Schedules</a></td>
+   <!-- <td><a href="../Studymaterials/studymaterials.php?cid=<?php echo $row['smid']?>&logid=<?php echo $logid; ?>">Add Schedules</a></td></tr> -->
                                       <?php $cnt=$cnt+1; } ?>
         </tbody>  
       </table>  

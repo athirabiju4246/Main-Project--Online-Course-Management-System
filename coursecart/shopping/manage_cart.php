@@ -21,25 +21,26 @@
                 $row = mysqli_fetch_array($sql_already_exist);
                 $quantity = $quantity + $row["quantity"];
                
-                $addtocart_res = mysqli_query($conn,"INSERT INTO studentcourse VALUES(null,$cid,$logid)");
+                $addres = mysqli_query($conn,"INSERT INTO cart VALUES(null,$cid,$logid,$quantity)");
                 if(mysqli_insert_id($conn) >= 0){
                     echo "<script>
-                    alert('Product added to cart successfully.');
-                       
+                    alert('Product added to course successfully.');
+                    window.href=location='my-cart.php';
                     </script>";      
                 }
-            }else{
-        
-                $addtocart_res= mysqli_query($conn,"INSERT INTO cart VALUES(null,$cid,$logid,$quantity)");
-                if(mysqli_insert_id($conn) >= 0){
-                   echo "<script>
-                       alert('Product added to cart successfully.');
-                        window.href=location='my-cart.php';
-                    </script>";
-                
             }
+        //     else{
         
-        }
+        //         $addtocart_res= mysqli_query($conn,"INSERT INTO cart VALUES(null,$cid,$logid,$quantity)");
+        //         if(mysqli_insert_id($conn) >= 0){
+        //            echo "<script>
+        //                alert('Product added to cart successfully.');
+        //                 window.href=location='my-cart.php';
+        //             </script>";
+                
+        //     }
+        
+        // }
         }
 
         if(isset($_POST['update_Item']))

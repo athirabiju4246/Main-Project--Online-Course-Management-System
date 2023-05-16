@@ -6,7 +6,7 @@ session_start();
     $resu = mysqli_query($conn, $sqlq);
     $row = mysqli_fetch_assoc($resu);
 	  $logid= $row['logid'];
-	echo $logid;
+	
 //if(isset($_SESSION['logid'])){
   //  $islogged=$_SESSION['logid'];
     //if($islogged==false){
@@ -172,7 +172,7 @@ while($row=mysqli_fetch_array($query))
     <td><?php echo htmlentities($row['cname']);?></td>
     <td><?php echo htmlentities($row['date']);?></td>
     <td> <?php echo htmlentities($row['time']);?></td>
-    <td> <?php echo htmlentities($row['link']);?></td>
+    <td><?php echo htmlentities($row['link']);?></td>
     
     
 </tr>

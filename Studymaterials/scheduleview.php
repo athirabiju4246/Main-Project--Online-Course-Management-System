@@ -10,34 +10,31 @@ $email=$_SESSION['email'];
 <html>
   <body>
     <h4 align="center">Schedule<h4>
-<table style="width:75%"cellpadding="10" cellspacing="4" border="3" align="center">          
-              <tr>
-                  <th>No</th>
-                  
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Link</th> 
-                                 
-              </tr>             
-              <?php
-             
-              $query=mysqli_query($conn,"select * from tbl_schedule");             
-$cnt=1;
-while($row=mysqli_fetch_array($query))
-{
- 
-?>                                  
-              <tr>
-                  <td><?php echo htmlentities($cnt);?></td>
-                  
-                  <td><?php echo htmlentities($row['date']);?></td>
-                  <td><?php echo htmlentities($row['time']);?></td>
-                  <td><?php echo htmlentities($row['link']);?></td>
-                 <!-- <td><a href="schedule.php?id=<?php echo $row['scid']?>&logid=<?php echo $logid; ?>">View</a></td>-->
-              </tr>
-              <?php $cnt=$cnt+1; } ?>
-              
-      </table>
+    <table style="width:75%" cellpadding="10" cellspacing="4" border="3" align="center">          
+  <tr>
+    <th>No</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>End Time</th>
+    <th>Link</th> 
+    <th>Delete</th>                          
+  </tr>             
+  <?php
+  $query=mysqli_query($conn,"SELECT * FROM tbl_schedule");             
+  $cnt=1;
+  while($row=mysqli_fetch_array($query)) {
+  ?>                                  
+  <tr>
+    <td><?php echo htmlentities($cnt);?></td>
+    <td><?php echo htmlentities($row['date']);?></td>
+    <td><?php echo htmlentities($row['time']);?></td>
+    <td><?php echo htmlentities($row['etime']);?></td>
+    <td><?php echo htmlentities($row['link']);?></td>
+    <td><a href="delete_schedule.php?id=<?php echo $row['scid']; ?>">Delete</a></td>
+  </tr>
+  <?php $cnt=$cnt+1; } ?>              
+</table>
+
 
     </li>
           </ul>

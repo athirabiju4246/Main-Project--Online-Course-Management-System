@@ -6,7 +6,7 @@
     $resu = mysqli_query($conn, $sqlq);
     $row = mysqli_fetch_assoc($resu);
 	  $logid= $row['logid'];
-	echo $logid;
+	//echo $logid;
 	$targetDir="shopping/cimages/";
 if(isset($_POST['submit']))
 {
@@ -56,9 +56,113 @@ else{
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="stylescadd.css">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styleA.css">
+    
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   
   <body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">EduWell</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="#" class="active">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="categoryadd.php">
+            <i class='bx bx-box' ></i>
+            <span class="links_name">category</span>
+          </a>
+        </li>
+        <li>
+          <a href="subcategory.php">
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name">Subactegory</span>
+          </a>
+        </li>
+        <li>
+          <a href="courseregister.php">
+            <i class='bx bx-pie-chart-alt-2' ></i>
+            <span class="links_name">Courses</span>
+          </a>
+        </li>
+        <li>
+          <a href="categoryview.php">
+            <i class='bx bx-coin-stack' ></i>
+            <span class="links_name">Category View</span>
+          </a>
+        </li>
+        <li>
+          <a href="subcategoryview.php">
+            <i class='bx bx-book-alt' ></i>
+            <span class="links_name">Subcategory view</span>
+          </a>
+        </li>
+       <!-- <li>
+          <a href="#">
+            <i class='bx bx-user' ></i>
+            <span class="links_name">Team</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-message' ></i>
+            <span class="links_name">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-heart' ></i>
+            <span class="links_name">Favrorites</span>
+          </a>
+        </li>-->
+        <li>
+          <a href="#">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Setting</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="logout.php">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">Dashboard</span>
+      </div>
+     <!-- <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <i class='bx bx-search' ></i>
+      </div>-->
+      <div class="profile-details">
+        <!--<img src="images/profile.jpg" alt="">-->
+        <span class="admin_name">Admin</span>
+        <i class='bx bx-chevron-down' ></i>
+      </div>
+</div>
+    </nav>
+</div>
+<div class="row header" style="text-align:center;color:black;backgroundcolor:white" >
+    <div>
     <form method="POST" action="#" enctype="multipart/form-data">
 <div class="wrapper">
     <div class="title">
@@ -136,7 +240,7 @@ function validateInput(event) {
      </div> 
        <div class="inputfield">
           <label>Start Date</label>
-          <input type="date" class="input" name="cstart" placeholder="Start Date"  id="myDate" min="2023-04-04" max="" >
+          <input type="date" class="input" name="cstart" placeholder="Start Date"  id="myDate" min="2023-04-04" max="" required>
           <script>
             function myFunction() {
               var x = document.getElementById("myDate").max = "2014-01-01";
@@ -147,7 +251,7 @@ function validateInput(event) {
         </div>  
       <div class="inputfield">
           <label>End Date</label>
-          <input type="date"  name="cend" class="input" min="2024-01-01">
+          <input type="date"  name="cend" class="input" min="2024-01-01" required>
            <script>
             function myFunction() {
               var x = document.getElementById("myDate").max = "2014-01-01";
@@ -158,11 +262,11 @@ function validateInput(event) {
        </div> 
       <div class="inputfield">
           <label>Fees</label>
-          <input type="text" class="input" id="phone" name="fees" placeholder="Fees" onkeyup="phn_noValidation(this)" maxlength="4">
+          <input type="text" class="input" id="phone" name="fees" placeholder="Fees" onkeyup="phn_noValidation(this)" maxlength="4" required>
        </div> 
        <div class="inputfield">
         <label>Description</label>
-        <input type="text" class="input" name="description" placeholder="Description">
+        <input type="text" class="input" name="description" placeholder="Description" required>
      </div> 
      <div class="inputfield">           
                                         <label for="image">Course image</label>

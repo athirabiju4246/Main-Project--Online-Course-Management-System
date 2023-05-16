@@ -9,12 +9,14 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOGIN</title>
     <link rel="stylesheet" href="login.css">
+    
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 		<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 
     <script src="https://kit.fontawesome.com/2bbac3a66c.js" crossorigin="anonymous" ></script>
+    
 </head>
 <body>
     <form id="create-account-form" action="Multilog.php" method="POST">
@@ -44,8 +46,10 @@ session_start();
         <center>
 		<p>Forgot password?<a href="forgot.php">Click here</a></p>
 		</center><br>
-        <button type="submit" name="sub"class="btn">Submit</button>
-        <p>Create An Account<a href="Studentregister.php">Click here</a></p>
+        <button type="submit" id="btn" name="sub"class="btn">Submit</button>
+        
+        <br><p>Create An Account For Student<a href="Studentregister.php">Click here</a></p><br>
+        <p>Create An Account For Tutor<a href="customerregistration.php">Click here</a></p>
     </form>
 
 

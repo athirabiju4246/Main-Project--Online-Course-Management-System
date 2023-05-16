@@ -1,5 +1,7 @@
 
 <?php
+ $current_time = date('Y-m-d H:i:s');
+ echo $current_time;   
 session_start();
 	include 'db.php';
 $email=$_SESSION['email'];
@@ -7,7 +9,7 @@ $email=$_SESSION['email'];
                                          $resu = mysqli_query($conn, $sqlq);
                                          $row = mysqli_fetch_assoc($resu);
                                            $logid= $row['logid'];
-                                           
+                                            
 if(isset($_POST['submit']))
 {
 	
@@ -18,6 +20,7 @@ if(isset($_POST['submit']))
   $etime = $_POST['etime'];
   //$added_on = $_POST['added_on'];
   $link = $_POST['link'];
+ 
 	$sql = "INSERT INTO `tbl_schedule`(`logid`, `cid`, `date`, `time`,`etime`, `link`) VALUES ('$logid', '$cid', '$date', '$time','$etime','$link')";
 	$result = mysqli_query($conn,$sql);
 	if($result){
@@ -80,19 +83,19 @@ if(isset($_POST['submit']))
                                     </select></div>
        <div class="inputfield">
           <label>Date:</label>
-          <input type="Date" class="input" name="date" placeholder="" required>
+          <input type="Date" class="input" id="date" name="date" placeholder="" required>
        </div> 
        <div class="inputfield">
           <label>Start Time:</label>
-          <input type="Time" class="input" name="time" placeholder="" required>
+          <input type="Time" class="input" id="stime" name="time" placeholder="" required>
        </div>  
        <div class="inputfield">
           <label>End Time:</label>
-          <input type="Time" class="input" name="etime" placeholder="" required>
+          <input type="Time" class="input" id="etime" name="etime" placeholder="" required>
        </div> 
        <div class="inputfield">
           <label>Link:</label>
-          <input type="Link" class="input" name="link" placeholder="" required>
+          <input type="Link" class="input" id="link" name="link" placeholder="" required>
        </div>
       <div class="inputfield">
         <input type="submit" value="Apply" name="submit" class="btn">

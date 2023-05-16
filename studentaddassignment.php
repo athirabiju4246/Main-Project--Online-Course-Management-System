@@ -175,7 +175,7 @@ while($row=mysqli_fetch_array($query))
     
     <td><a href="display_pdf.php?id=<?php echo $row['id']?>">View</a></td>
              
-    <td><a href="submitassignment.php?id=<?php echo $row['id']?>&logid=<?php echo $logid; ?>">View</a></td>
+    <td><a href="submitassignment.php?id=<?php echo $row['id']?>&logid=<?php echo $logid; ?>">Attend</a></td>
                                 
 </tr>
 <?php $cnt=$cnt+1; } ?>

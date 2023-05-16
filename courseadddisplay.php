@@ -21,7 +21,7 @@
   }
 </style>
     </head>  
-<body style="margin:10px auto">  
+<body style="margin:">  
  <div class="sidebar">
     <div class="logo-details">
       <i class='bx bxl-c-plus-plus'></i>
@@ -114,7 +114,7 @@
 </div>
     </nav>
 </div>
-    <div class="row header" style="text-align:center;color:black" >
+    <div class="row header" style="text-align:center;color:black;backgroundcolor:white" >
     <div>
     <br>
     <br>
@@ -141,7 +141,7 @@
         <?php
                         include 'config.php';
                         $query=mysqli_query($conn,"SELECT tbl_courseadd.cid,tbl_courseadd.cname,tbl_subcategory.class,tbl_courseadd.subcode,tbl_courseadd.cstart,tbl_courseadd.cend,tbl_courseadd.fees,tbl_courseadd.description, tbl_courseadd.status FROM tbl_courseadd INNER JOIN tbl_subcategory ON tbl_subcategory.subcatid = tbl_courseadd.subcatid;");
-                        
+                    
                         $cnt=1;
                         while($row=mysqli_fetch_array($query))
                         {

@@ -119,7 +119,7 @@
     <br>
     <br>
     <br><br>
-<h3>Courses</h3>
+<h3>CLASS</h3>
 <table id="myTable" class="table table-striped table-bordered table-responsive table-hover" >  
         <thead>  
         <tr>
